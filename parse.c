@@ -1,8 +1,11 @@
 #include "pipex.h"
 
-int parse(int argc) {
+void parse(int argc, char **argv)
+{
     if (argc != 5) {
         exit_error();
     
     return 0;
+}
+
 }

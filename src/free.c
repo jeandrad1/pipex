@@ -6,11 +6,11 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:24 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 15:23:22 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:29:40 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	ft_free_pipex(t_args pipex)
 {

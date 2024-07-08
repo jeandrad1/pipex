@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd.c                                              :+:      :+:    :+:   */
+/*   ft_putchr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 12:18:59 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 13:06:49 by jeandrad         ###   ########.fr       */
+/*   Created: 2023/12/19 09:52:03 by jeandrad          #+#    #+#             */
+/*   Updated: 2023/12/19 10:29:33 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
+#include <unistd.h>
 
-void	ft_split_cmd(t_args pipex)
+void	ft_putchar_fd(char c, int fd)
 {
-	int	i;
-
-	i = 0;
-	while (pipex.cmd[i])
-	{
-		pipex.cmd[i] = ft_split(pipex.cmd[i], ' ');
-		i++;
-	}
-	return ;
+	write(fd, &c, 1);
 }
+
+/*
+int main(void)
+{
+    ft_putchr_fd('t', 1);
+    return (0);
+}
+*/

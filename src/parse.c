@@ -6,11 +6,11 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:59:27 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 15:17:06 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:32:05 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	ft_parse(int argc, char **argv, t_args pipex)
 {
@@ -36,6 +36,6 @@ void	ft_parse(int argc, char **argv, t_args pipex)
 	if ((pipex.infile_fd = open(pipex.infile, O_RDONLY)) == -1)
 		exit_error(PIPEX_FILE_ERROR,1, &pipex);
 	if ((pipex.outfile_fd = open(pipex.outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
-		exit_error(PIPEX_FILE_ERROR, 1);
+		exit_error(PIPEX_FILE_ERROR, 1, &pipex);
 	return ;
 }

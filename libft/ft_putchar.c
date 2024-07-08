@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 12:57:51 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 12:58:05 by jeandrad         ###   ########.fr       */
+/*   Created: 2024/01/04 16:37:24 by jeandrad          #+#    #+#             */
+/*   Updated: 2024/06/22 11:25:13 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_init_pipex(int argc, char **argv, t_args pipex)
+int	ft_putchar(char c)
 {
-	pipex.cmd = NULL;
-	pipex.infile = NULL;
-	pipex.outfile = NULL;
-	pipex.infile_fd = -1;
-	pipex.outfile_fd = -1;
-	pipex.pipe_fd[0] = -1;
-	pipex.pipe_fd[1] = -1;
-	pipex.pid = -1;
-	return (pipex);
+	write(1, &c, 1);
+	return (1);
 }

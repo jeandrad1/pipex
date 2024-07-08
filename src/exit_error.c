@@ -6,11 +6,12 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:12:58 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 15:14:45 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:31:43 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
+
 // Function to display the error message
 // It receives an integer value with the error code
 static void	error_parsing(int error)
@@ -40,7 +41,7 @@ static void	error_parsing(int error)
 int	exit_error(int error, int is_exit, t_args *pipex)
 {
 	error_parsing(error);
-	ft_free_pipex(pipex);	
+	ft_free_pipex(*pipex);	
 	if (is_exit)
 		exit(error != NOTHING);
 	return (error != NOTHING);

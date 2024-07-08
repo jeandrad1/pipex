@@ -6,17 +6,17 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:07:10 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 15:20:22 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:29:31 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	ft_exec_cmd(t_args pipex)
 {
 	pipex.pid = fork();
 	if (pipex.pid == -1)
-		exit_error(FORK_ERROR, 1);
+		exit_error(FORK_ERROR, 1, &pipex);
 	if (pipex.pid == 0)
 	{
 		if (pipex.infile_fd != -1)

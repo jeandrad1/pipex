@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 12:57:09 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 15:12:03 by jeandrad         ###   ########.fr       */
+/*   Created: 2023/12/19 09:52:51 by jeandrad          #+#    #+#             */
+/*   Updated: 2023/12/19 10:29:37 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-// Main function
-int	main(int argc, char **argv)
+void	ft_putendl_fd(char *s, int fd)
 {
-	t_args	pipex;
-
-	ft_init_pipex(argc, argv, pipex);
-	ft_parse(argc, argv, pipex);
-	ft_split_cmd(pipex);
-	ft_exec_cmd(pipex);
-	free_pipe(pipex);
-
-	return (EXIT_SUCCESS);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
+
+/*
+int main()
+{
+    char test[] = "Hello World!";
+    ft_putendl_fd(test, 1);
+    return (0);
+}
+*/

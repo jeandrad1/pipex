@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:59:27 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 15:32:05 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 18:05:49 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ void	ft_parse(int argc, char **argv, t_args pipex)
 		exit_error(ARG_ERROR, 1, &pipex);
 	pipex.infile = argv[1];
 	pipex.outfile = argv[4];
-	pipex.cmd = malloc(sizeof(char *) * 3);
+	pipex.cmd = malloc(sizeof(char *) * 2);
 	if (!pipex.cmd)
 		exit_error(CMD_ERROR, 1, &pipex);
 	pipex.cmd[0] = argv[2];
 	pipex.cmd[1] = argv[3];
-	pipex.cmd[2] = NULL;
 	if (access(pipex.infile, R_OK) == -1)
 		exit_error(INFILE_ERROR, 1, &pipex);
 	if (access(pipex.outfile, W_OK) == -1)

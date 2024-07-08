@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:12:58 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 15:31:43 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 16:42:44 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@
 static void	error_parsing(int error)
 {
 	if (error == ARG_ERROR)
-		perror("ERROR: Arguments error\n");
+		ft_printf("ERROR: Arguments error\n");
 	else if (error == CMD_ERROR)
-		perror("ERROR: Malloc for Command error\n");
+		ft_printf("ERROR: Malloc for Command error\n");
 	else if (error == INFILE_ERROR)
-		perror("ERROR: Infile error\n");
+		ft_printf("ERROR: Infile error\n");
 	else if (error == OUTFILE_ERROR)
-		perror("ERROR: Outfile error\n");
+		ft_printf("ERROR: Outfile error\n");
 	else if (error == PIPE_ERROR)
-		perror("ERROR: Pipe error\n");
+		ft_printf("ERROR: Pipe error\n");
 	else if (error == PIPEX_FILE_ERROR)
-		perror("ERROR: Pipex file error\n");
+		ft_printf("ERROR: Pipex file error\n");
 	else if (error == FORK_ERROR)
-		perror("ERROR: Fork error\n");
+		ft_printf("ERROR: Fork error\n");
 	else if (error == DUP2_ERROR)
-		perror("ERROR: Dup2 error\n");
+		ft_printf("ERROR: Dup2 error\n");
 	else
-		perror("ERROR: Unknown error\n");
+		ft_printf("ERROR: Unknown error\n");
 }
 
 // Function to display the error message and exit the program
@@ -41,7 +41,7 @@ static void	error_parsing(int error)
 int	exit_error(int error, int is_exit, t_args *pipex)
 {
 	error_parsing(error);
-	ft_free_pipex(*pipex);	
+	ft_free_pipex(*pipex);
 	if (is_exit)
 		exit(error != NOTHING);
 	return (error != NOTHING);

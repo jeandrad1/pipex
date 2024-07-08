@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:24 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 15:29:40 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 16:33:26 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ void	ft_free_pipex(t_args pipex)
 		close(pipex.pipe_fd[0]);
 	if (pipex.pipe_fd[1] != -1)
 		close(pipex.pipe_fd[1]);
-	free(&pipex);
 }

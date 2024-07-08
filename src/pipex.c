@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:57:09 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 15:30:11 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 16:35:10 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ int	main(int argc, char **argv)
 {
 	t_args	pipex;
 
-	ft_init_pipex(argc, argv, pipex);
+	ft_memset(&pipex, 0, sizeof(t_args));
+	ft_init_pipex(pipex);
 	ft_parse(argc, argv, pipex);
 	ft_split_cmd(pipex);
 	ft_exec_cmd(pipex);
-	free_pipe(pipex);
+	ft_free_pipex(pipex);
 
 	return (EXIT_SUCCESS);
 }

@@ -6,12 +6,13 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:57:09 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 13:09:21 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 13:27:52 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+// Main function
 int	main(int argc, char **argv)
 {
 	t_args	pipex;

@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:12:58 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 13:25:57 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 14:59:28 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ static void	error_parsing(int error)
 		perror("ERROR: Pipe error\n");
 	else if (error == PIPEX_FILE_ERROR)
 		perror("ERROR: Pipex file error\n");
+	else if (error == FORK_ERROR)
+		perror("ERROR: Fork error\n");
+	else if (error == DUP2_ERROR)
+		perror("ERROR: Dup2 error\n");
 	else
 		perror("ERROR: Unknown error\n");
 }

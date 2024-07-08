@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:14:07 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 13:22:44 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:00:38 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 #define OUTFILE_ERROR 4	
 #define PIPE_ERROR 5
 #define PIPEX_FILE_ERROR 6
+#define FORK_ERROR 7
+#define DUP2_ERROR 8
+#define EXEC_ERROR 9
 
 typedef struct s_args
 {

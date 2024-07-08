@@ -19,6 +19,8 @@ FILES =	parse\
 		cmd\
 		exec\
 		exit_error\
+		free\
+		init\
 		
 # Source directory
 SRCS_DIR = ./src/

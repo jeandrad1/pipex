@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:14:07 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 15:16:19 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:24:36 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,4 @@ void	ft_parse(int argc, char **argv, t_args pipex);
 void	ft_split_cmd(t_args pipex);
 void	ft_exec_cmd(t_args pipex);
 void	exit_error(int error, int is_exit, t_args *pipex);
-
+void	ft_free_pipex(t_args pipex);

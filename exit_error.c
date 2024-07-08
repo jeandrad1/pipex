@@ -3,8 +3,8 @@
 // It receives an integer value with the error code
 static void	error_parsing(int error)
 {
-	if (error == )
-		printf("ERROR: Arguments error\n");
+	if (error == 1)
+		ft_printf("ERROR: Arguments error\n");
 }
 
 // Function to display the error message and exit the program

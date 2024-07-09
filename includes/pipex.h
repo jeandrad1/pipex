@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:14:07 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 18:08:41 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/09 16:32:53 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
 
 typedef struct s_args
 {
+	char	*cmd1;
+	char	*cmd2;
+	char	*cmd_exec;
 	char	**cmd;
 	char	*infile;
 	char	*outfile;

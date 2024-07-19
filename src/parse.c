@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:59:27 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/09 16:30:10 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/19 11:26:16 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_parse(int argc, char **argv, t_args pipex)
 	int	i;
 
 	i = 0;
+	
 	if (argc != 5)
 		exit_error(ARG_ERROR, 1, &pipex);
 	pipex.infile = argv[1];

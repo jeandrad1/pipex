@@ -5,7 +5,7 @@ NAME = pipex
 CC = clang
 
 # Compiler flags
-FLAGS = -Wall -Werror -Wextra -Iinclude
+FLAGS = -Wall -Werror -Wextra -g -Iinclude 
 
 # Source files for libft
 LIBFT_PATH = ./libft

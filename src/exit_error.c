@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:12:58 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/08 16:42:44 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:39:20 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ static void	error_parsing(int error)
 
 // Function to display the error message and exit the program
 // After displaying the help information
-int	exit_error(int error, int is_exit, t_args *pipex)
+int	exit_error(int error, int is_exit, t_args *pipex, int is_free)
 {
 	error_parsing(error);
-	ft_free_pipex(*pipex);
+	if(is_free)
+		ft_free_pipex(*pipex);
 	if (is_exit)
 		exit(error != NOTHING);
 	return (error != NOTHING);

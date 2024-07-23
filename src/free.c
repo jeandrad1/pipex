@@ -14,9 +14,7 @@
 
 void	ft_free_pipex(t_args pipex)
 {
-	int	i;
 
-	i = 0;
 	if (pipex.cmd1)
 		free(pipex.cmd1);
 	if (pipex.cmd2)

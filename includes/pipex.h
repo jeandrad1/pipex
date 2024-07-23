@@ -34,6 +34,8 @@ typedef struct s_args
 	char	*cmd1;
 	char	*cmd2;
 	char	*cmd_exec;
+	char	*cmd1_path;
+	char	*cmd2_path;
 	char	**cmd;
 	char	*infile;
 	char	*outfile;

@@ -15,11 +15,9 @@
 int	ft_print_hex(unsigned int n)
 {
 	char	*hex;
-	int		i;
 	int		count;
 
 	hex = "0123456789abcdef";
-	i = 0;
 	count = 0;
 	if (n >= 16)
 		count += ft_print_hex(n / 16);

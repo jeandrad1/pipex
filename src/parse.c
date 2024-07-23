@@ -14,10 +14,6 @@
 
 void	ft_parse(int argc, char **argv, t_args pipex)
 {
-	int	i;
-
-	i = 0;
-	
 	if (argc != 5)
 		exit_error(ARG_ERROR, 1, &pipex, 0);
 	pipex.infile = argv[1];

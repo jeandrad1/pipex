@@ -4,7 +4,6 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 #include <string.h>
-#include "libft/libft.h"
 
 typedef struct {
     char **cmd1;
@@ -15,7 +14,7 @@ typedef struct {
 
 void ft_init_pipex(t_args *pipex) {
     // Initialize pipex structure
-    memset(pipex, 0, sizeof(t_args));   
+    memset(pipex, 0, sizeof(t_args));
 }
 
 char **split_command(const char *command) {
@@ -37,6 +36,13 @@ char **split_command(const char *command) {
     return args;
 }
 
+void check_and_set_env() {
+    if (getenv("PATH") == NULL) {
+        setenv("PATH", "/usr/bin:/bin", 1);
+    }
+    // Add checks for other essential environment variables if needed
+}
+
 void ft_parse(int argc, char **argv, t_args *pipex) {
     if (argc != 5) {
         fprintf(stderr, "Usage: %s infile command1 command2 outfile\n", argv[0]);
@@ -54,6 +60,9 @@ void ft_parse(int argc, char **argv, t_args *pipex) {
         exit(EXIT_FAILURE);
     }
     close(infile_fd);
+
+    // Check and set essential environment variables
+    check_and_set_env();
 }
 
 void ft_exec_cmd(t_args *pipex) {

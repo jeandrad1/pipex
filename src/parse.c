@@ -6,20 +6,17 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:59:27 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 10:43:28 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 11:13:48 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-extern char **environ;
-
-static void check_and_set_env()
+// Check if PATH is set and set it if not
+static void check_and_set_env(char **env)
 {
-    char **env;
     int path_found;
 
-    env = environ;
     path_found = 0;
     // Check if PATH is set
     while (*env)
@@ -79,5 +76,5 @@ void ft_parse(int argc, char **argv, t_args *pipex)
     close(infile_fd);
 
     // Check and set essential environment variables
-    check_and_set_env();
+    check_and_set_env(pipex->env);
 }

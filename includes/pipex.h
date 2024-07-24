@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:14:07 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 10:43:48 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 11:12:38 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct{
     char **cmd2;
     char *infile;
     char *outfile;
+    char **env;
 } t_args;
 
 void	ft_init_pipex(t_args *pipex);

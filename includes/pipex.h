@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:14:07 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 12:00:33 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:51:43 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <sys/wait.h>
 #include <errno.h>
 
+// Error codes
 #define NOTHING 0
 #define ARG_ERROR 1
 #define CMD_ERROR 2
@@ -29,6 +30,7 @@
 #define DUP2_ERROR 8
 #define EXEC_ERROR 9
 
+// Structure to store the arguments
 typedef struct s_args
 {
 	char	**cmd1;

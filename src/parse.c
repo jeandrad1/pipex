@@ -6,13 +6,13 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:59:27 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 11:56:16 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:54:56 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-// Check if PATH is set and set it if not
+// Check if PATH is set and set it if not it displays an error message and exits
 static void	check_and_set_env(char **env)
 {
 	int	path_found;
@@ -34,6 +34,10 @@ static void	check_and_set_env(char **env)
 	}
 }
 
+// Split the command into an array of strings
+//It uses strtok to split the command by spaces
+//And reallocates the array of strings to store each token
+//It returns the array of strings
 static char	**split_command(const char *command)
 {
 	char	**args;
@@ -47,24 +51,27 @@ static char	**split_command(const char *command)
 	count = 0;
 	while (token)
 	{
-		args = realloc(args, sizeof(char *) * (count + 1));
+		args = ft_realloc(args, sizeof(char *) * (count + 1));
 		args[count] = ft_strdup(token);
 		count++;
 		token = ft_strtok(NULL, " ");
 	}
-	args = realloc(args, sizeof(char *) * (count + 1));
+	args = ft_realloc(args, sizeof(char *) * (count + 1));
 	args[count] = NULL;
 	free(cmd_copy);
 	return (args);
 }
 
+// Parse the arguments
+// Uses the split_command function to split the commands
+// And checks if the infile and outfile can be opened
+// Check the environment variables
 void	ft_parse(int argc, char **argv, t_args *pipex)
 {
 	int	infile_fd;
 
 	if (argc != 5)
-		ft_exit(pipex, "Usage: ./pipex infile command1 command2 outfile",
-			EXIT_FAILURE);
+		ft_exit(pipex, "Error: invalid number of arguments", EXIT_FAILURE);
 	pipex->infile = argv[1];
 	pipex->cmd1 = split_command(argv[2]);
 	pipex->cmd2 = split_command(argv[3]);

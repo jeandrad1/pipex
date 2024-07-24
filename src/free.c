@@ -6,12 +6,15 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:12:24 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 11:56:41 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:45:03 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
+// Free the pipex structure
+// It frees each element of the cmd1 and cmd2 arrays
+// And then frees the arrays
 void	ft_free_pipex(t_args *pipex)
 {
 	int	i;

@@ -6,12 +6,15 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:07:10 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 11:25:30 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:47:25 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
+// Function to handle the child process for the first command
+// Uses dup2 to redirect the input and output of the command
+// Closes the file descriptors and executes the command 
 static void	handle_child1(t_args *pipex, int pipe_fd[2])
 {
 	int	infile_fd;
@@ -29,6 +32,9 @@ static void	handle_child1(t_args *pipex, int pipe_fd[2])
 	ft_exit(pipex, "Error: execvp failed for cmd1", EXIT_FAILURE);
 }
 
+// Function to handle the child process for the second command
+// Uses dup2 to redirect the input and output of the command
+// Closes the file descriptors and executes the command 
 static void	handle_child2(t_args *pipex, int pipe_fd[2])
 {
 	int	outfile_fd;
@@ -46,6 +52,9 @@ static void	handle_child2(t_args *pipex, int pipe_fd[2])
 	ft_exit(pipex, "Error: execvp failed for cmd2", EXIT_FAILURE);
 }
 
+// Function to handle the parent process
+// Closes the file descriptors and waits for the child processes to finish
+// If the child processes fail it displays an error message and exits
 static void	handle_parent(t_args *pipex, int pipe_fd[2], pid_t pid1, pid_t pid2)
 {
 	int	status1;
@@ -63,6 +72,10 @@ static void	handle_parent(t_args *pipex, int pipe_fd[2], pid_t pid1, pid_t pid2)
 		ft_exit(pipex, "Error: cmd2 failed", status2);
 }
 
+// Function to execute the commands
+// Creates a pipe and forks two child processes
+// The child proocesses are concurrent and execute the commands
+// The parent process waits for the child processes to finish
 void	ft_exec_cmd(t_args *pipex)
 {
 	int		pipe_fd[2];

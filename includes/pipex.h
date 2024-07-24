@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:14:07 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 11:12:38 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:00:33 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@
 #define DUP2_ERROR 8
 #define EXEC_ERROR 9
 
-typedef struct{
-    char **cmd1;
-    char **cmd2;
-    char *infile;
-    char *outfile;
-    char **env;
-} t_args;
+typedef struct s_args
+{
+	char	**cmd1;
+	char	**cmd2;
+	char	*infile;
+	char	*outfile;
+	char	**env;
+}	t_args;
 
 void	ft_init_pipex(t_args *pipex);
 void	ft_parse(int argc, char **argv, t_args *pipex);
 void	ft_split_cmd(t_args *pipex);
 void	ft_exec_cmd(t_args *pipex);
-void    ft_exit(t_args *pipex, const char *error_message, int exit_code);
+void	ft_exit(t_args *pipex, const char *error_message, int exit_code);
 void	ft_free_pipex(t_args *pipex);
-

@@ -16,7 +16,6 @@ LIBFT = $(LIBFT_PATH)/libft.a
 # Source files for mandatory
 FILES =	parse\
 		pipex\
-		cmd\
 		exec\
 		exit_error\
 		free\

@@ -2,4 +2,4 @@
 *.a
 pipex
 a.out
-outfile.txt
+*.txt

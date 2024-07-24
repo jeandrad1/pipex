@@ -6,31 +6,56 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:59:27 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/20 13:00:48 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 09:44:52 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_parse(int argc, char **argv, t_args pipex)
+void check_and_set_env() {
+    if (getenv("PATH") == NULL) {
+        setenv("PATH", "/usr/bin:/bin", 1);
+    }
+    // Add checks for other essential environment variables if needed
+}
+
+char **split_command(const char *command) {
+    char **args = NULL;
+    char *cmd_copy = ft_strdup(command);
+    char *token = ft_strtok(cmd_copy, " ");
+    int count = 0;
+
+    while (token)
+	{
+        args = realloc(args, sizeof(char *) * (count + 1));
+        args[count] = ft_strdup(token);
+        count++;
+        token = ft_strtok(NULL, " ");
+    }
+    args = realloc(args, sizeof(char *) * (count + 1));
+    args[count] = NULL;
+
+    free(cmd_copy);
+    return args;
+}
+
+void ft_parse(int argc, char **argv, t_args *pipex)
 {
-	if (argc != 5)
-		exit_error(ARG_ERROR, 1, &pipex, 0);
-	pipex.infile = argv[1];
-	pipex.outfile = argv[4];
-	pipex.cmd1 = argv[2];
-	pipex.cmd2 = argv[3];
-	if (!pipex.cmd1 || !pipex.cmd2)
-		exit_error(CMD_ERROR, 1, &pipex, 1);
-	if (access(pipex.infile, R_OK) == -1)
-		exit_error(INFILE_ERROR, 1, &pipex, 1);
-	if (access(pipex.outfile, W_OK) == -1)
-		exit_error(OUTFILE_ERROR, 1, &pipex, 0);
-	if (pipe(pipex.pipe_fd) == -1)
-		exit_error(PIPE_ERROR, 1, &pipex, 0);
-	if ((pipex.infile_fd = open(pipex.infile, O_RDONLY)) == -1)
-		exit_error(PIPEX_FILE_ERROR,1, &pipex, 0);
-	if ((pipex.outfile_fd = open(pipex.outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
-		exit_error(PIPEX_FILE_ERROR, 1, &pipex, 0);
-	return ;
+    if (argc != 5) {
+        ft_exit(pipex, "Usage: ./pipex infile command1 command2 outfile", EXIT_FAILURE);
+    }
+    pipex->infile = argv[1];
+    pipex->cmd1 = split_command(argv[2]);
+    pipex->cmd2 = split_command(argv[3]);
+    pipex->outfile = argv[4];
+
+    // Check if infile is valid
+    int infile_fd = open(pipex->infile, O_RDONLY);
+    if (infile_fd == -1) {
+        ft_exit(pipex, "Error: Unable to open infile", EXIT_FAILURE);
+    }
+    close(infile_fd);
+
+    // Check and set essential environment variables
+    check_and_set_env();
 }

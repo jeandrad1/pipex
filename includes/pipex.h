@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:14:07 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/20 12:39:46 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 09:52:06 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,16 @@
 #define DUP2_ERROR 8
 #define EXEC_ERROR 9
 
-typedef struct s_args
-{
-	char	*cmd1;
-	char	*cmd2;
-	char	*cmd_exec;
-	char	*cmd1_path;
-	char	*cmd2_path;
-	char	**cmd;
-	char	*infile;
-	char	*outfile;
-	int		infile_fd;
-	int		outfile_fd;
-	int		pipe_fd[2];
-	int		pid;
-}	t_args;
+typedef struct{
+    char **cmd1;
+    char **cmd2;
+    char *infile;
+    char *outfile;
+} t_args;
 
-void	ft_init_pipex(t_args pipex);
-void	ft_parse(int argc, char **argv, t_args pipex);
-void	ft_split_cmd(t_args pipex);
-void	ft_exec_cmd(t_args pipex);
-int		exit_error(int error, int is_exit, t_args *pipex,int is_free);
-void	ft_free_pipex(t_args pipex);
+void	ft_init_pipex(t_args *pipex);
+void	ft_parse(int argc, char **argv, t_args *pipex);
+void	ft_split_cmd(t_args *pipex);
+void	ft_exec_cmd(t_args *pipex);
+void    ft_exit(t_args *pipex, const char *error_message, int exit_code);
+void	ft_free_pipex(t_args *pipex);

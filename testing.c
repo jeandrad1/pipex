@@ -12,6 +12,109 @@ typedef struct {
     char *outfile;
 } t_args;
 
+size_t ft_strspn(const char *s, const char *accept) {
+    const char *p, *a;
+    size_t count = 0;
+
+    for (p = s; *p != '\0'; ++p) {
+        for (a = accept; *a != '\0'; ++a) {
+            if (*p == *a) {
+                break;
+            }
+        }
+        if (*a == '\0') {
+            return count;
+        }
+        ++count;
+    }
+    return count;
+}
+
+// Custom implementation of strcspn
+size_t ft_strcspn(const char *s, const char *reject) {
+    const char *p, *r;
+    size_t count = 0;
+
+    for (p = s; *p != '\0'; ++p) {
+        for (r = reject; *r != '\0'; ++r) {
+            if (*p == *r) {
+                return count;
+            }
+        }
+        ++count;
+    }
+    return count;
+}
+
+// Custom implementation of memcpy
+void *ft_memcpy(void *dest, const void *src, size_t n) {
+    unsigned char *d = dest;
+    const unsigned char *s = src;
+
+    while (n--) {
+        *d++ = *s++;
+    }
+    return dest;
+}
+char *ft_strtok(char *str, const char *delim) {
+    static char *last;
+    if (str == NULL) {
+        str = last;
+    }
+    if (str == NULL) {
+        return NULL;
+    }
+
+    // Skip leading delimiters
+    str += ft_strspn(str, delim);
+    if (*str == '\0') {
+        return NULL;
+    }
+
+    // Find the end of the token
+    char *end = str + ft_strcspn(str, delim);
+    if (*end == '\0') {
+        last = NULL;
+    } else {
+        *end = '\0';
+        last = end + 1;
+    }
+
+    return str;
+}
+
+// Custom implementation of strdup
+char *ft_strdup(const char *s) {
+    size_t len = strlen(s) + 1;
+    char *dup = malloc(len);
+    if (dup == NULL) {
+        return NULL;
+    }
+    ft_memcpy(dup, s, len);
+    return dup;
+}
+
+// Custom implementation of realloc
+void *ft_realloc(void *ptr, size_t size) {
+    if (ptr == NULL) {
+        return malloc(size);
+    }
+    if (size == 0) {
+        free(ptr);
+        return NULL;
+    }
+
+    void *new_ptr = malloc(size);
+    if (new_ptr == NULL) {
+        return NULL;
+    }
+
+    // Copy old data to new memory
+    ft_memcpy(new_ptr, ptr, size);
+    free(ptr);
+    return new_ptr;
+}
+
 void ft_free_pipex(t_args *pipex) {
     if (pipex->cmd1) {
         for (int i = 0; pipex->cmd1[i] != NULL; i++) {
@@ -46,17 +149,17 @@ void ft_init_pipex(t_args *pipex) {
 
 char **split_command(const char *command) {
     char **args = NULL;
-    char *cmd_copy = strdup(command);
-    char *token = strtok(cmd_copy, " ");
+    char *cmd_copy = ft_strdup(command);
+    char *token = ft_strtok(cmd_copy, " ");
     int count = 0;
 
     while (token) {
-        args = realloc(args, sizeof(char *) * (count + 1));
-        args[count] = strdup(token);
+        args = ft_realloc(args, sizeof(char *) * (count + 1));
+        args[count] = ft_strdup(token);
         count++;
-        token = strtok(NULL, " ");
+        token = ft_strtok(NULL, " ");
     }
-    args = realloc(args, sizeof(char *) * (count + 1));
+    args = ft_realloc(args, sizeof(char *) * (count + 1));
     args[count] = NULL;
 
     free(cmd_copy);

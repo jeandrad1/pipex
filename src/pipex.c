@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:57:09 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 11:43:29 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:23:09 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int	main(int argc, char **argv, char **env)
 	printf("exec OK\n");
 	ft_free_pipex(&pipex);
 	printf("free OK\n");
+	printf("EXIT_SUCCESS\n");
 	return (EXIT_SUCCESS);
 }

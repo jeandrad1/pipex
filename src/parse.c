@@ -6,20 +6,42 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:59:27 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 09:44:52 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 10:43:28 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void check_and_set_env() {
-    if (getenv("PATH") == NULL) {
-        setenv("PATH", "/usr/bin:/bin", 1);
+extern char **environ;
+
+static void check_and_set_env()
+{
+    char **env;
+    int path_found;
+
+    env = environ;
+    path_found = 0;
+    // Check if PATH is set
+    while (*env)
+    {
+        if (ft_strncmp(*env, "PATH=", 5) == 0)
+        {
+            path_found = 1;
+            break;
+        }
+        env++;
     }
-    // Add checks for other essential environment variables if needed
+
+    // If PATH is not set, set it
+    if (!path_found)
+    {
+        perror("Error: PATH not set");
+        exit(EXIT_FAILURE);
+    }
 }
 
-char **split_command(const char *command) {
+static char **split_command(const char *command)
+{
     char **args = NULL;
     char *cmd_copy = ft_strdup(command);
     char *token = ft_strtok(cmd_copy, " ");

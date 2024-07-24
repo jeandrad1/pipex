@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:12:58 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 09:51:54 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 10:23:33 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 void ft_exit(t_args *pipex, const char *error_message, int exit_code)
 {
     ft_free_pipex(pipex);
-    if (error_message) {
-        fprintf(stderr, "%s\n", error_message);
-    }
+    if (error_message)
+        perror(error_message);
     exit(exit_code);
 }

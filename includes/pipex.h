@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:14:07 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 09:52:06 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/24 10:43:48 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,4 @@ void	ft_split_cmd(t_args *pipex);
 void	ft_exec_cmd(t_args *pipex);
 void    ft_exit(t_args *pipex, const char *error_message, int exit_code);
 void	ft_free_pipex(t_args *pipex);
+

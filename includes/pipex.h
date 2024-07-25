@@ -28,7 +28,7 @@
 #define PIPEX_FILE_ERROR 6
 #define FORK_ERROR 7
 #define DUP2_ERROR 8
-#define EXEC_ERROR 9
+#define EXEC_ERROR 127
 
 // Structure to store the arguments
 typedef struct s_args

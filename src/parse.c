@@ -47,6 +47,8 @@ static char	**split_command(const char *command)
 
 	args = NULL;
 	cmd_copy = ft_strdup(command);
+	if (cmd_copy  == NULL)
+		ft_exit(NULL, "Error: empty command.", EXIT_FAILURE);
 	token = ft_strtok(cmd_copy, " ");
 	count = 0;
 	while (token)

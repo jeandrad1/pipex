@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 10:15:28 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/26 11:18:35 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/26 12:06:22 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ char	**allocate_args(char **args, int count)
 	int		i;
 	char	**new_args;
 
-	new_args = ft_realloc(args, sizeof(char *) * (count + 1));
-	if (!new_args || new_args == NULL)
+	new_args = malloc(sizeof(char *) * (count + 1));
+	if (new_args == NULL)
 	{
 		i = 0;
 		while (i < count)
@@ -51,6 +51,12 @@ char	**allocate_args(char **args, int count)
 		free(args);
 		perror("Error: memory allocation failed");
 		exit(EXIT_FAILURE);
+	}
+	i = 0;
+	while (i < count)
+	{
+		new_args[i] = args[i];
+		i++;
 	}
 	return (new_args);
 }

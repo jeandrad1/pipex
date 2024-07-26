@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:05:45 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/26 10:26:13 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/26 11:56:46 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	*ft_realloc(void *ptr, size_t size)
 {
 	void	*new_ptr;
+	size_t	old_size;
 
 	if (ptr == NULL)
 		return (malloc(size));
@@ -23,6 +24,7 @@ void	*ft_realloc(void *ptr, size_t size)
 		free(ptr);
 		return (NULL);
 	}
+	old_size = ft_strlen(ptr);
 	new_ptr = malloc(size);
 	if (new_ptr == NULL)
 		return (NULL);

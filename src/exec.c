@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:07:10 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/26 11:22:48 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/26 11:30:52 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ static void	handle_parent(t_args *pipex, int pipe_fd[2], pid_t pid1, pid_t pid2)
 {
 	int	status1;
 	int	status2;
-	int	exit_status1;
-	int	exit_status2;
 
 	close(pipe_fd[0]);
 	close(pipe_fd[1]);
@@ -68,16 +66,10 @@ static void	handle_parent(t_args *pipex, int pipe_fd[2], pid_t pid1, pid_t pid2)
 		ft_exit(pipex, "Error: waitpid failed for cmd1", EXEC_ERROR);
 	if (waitpid(pid2, &status2, 0) == -1)
 		ft_exit(pipex, "Error: waitpid failed for cmd2", EXEC_ERROR);
-	if (WIFEXITED(status1))
-	{
-		exit_status1 = WEXITSTATUS(status1);
-		ft_exit(pipex, "Command 1 exited with a failed status", exit_status1);
-	}
-	if (WIFEXITED(status2))
-	{
-		exit_status2 = WEXITSTATUS(status2);
-		ft_exit(pipex, "Command 2 exited with failed", exit_status2);
-	}
+	if (WIFEXITED(status1) == 0)
+		ft_exit(pipex, "Command 1 not found", ARG_ERROR);
+	if (WIFEXITED(status2) == 0)
+		ft_exit(pipex, "Command 2 not found", ARG_ERROR);
 }
 
 // Function to execute the commands

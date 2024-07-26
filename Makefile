@@ -14,12 +14,13 @@ LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
 # Source files for mandatory
-FILES =	parse\
-		pipex\
+FILES =	pipex\
+		init\
+		split_utils\
+		parse\
 		exec\
 		exit_error\
 		free\
-		init\
 		
 # Source directory
 SRCS_DIR = ./src/

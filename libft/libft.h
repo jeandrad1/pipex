@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:24:09 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 11:44:31 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/26 10:42:50 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,5 @@ int					ft_print_hex(unsigned int n);
 
 char				*ft_strtok(char *str, const char *delim);
 void				*ft_realloc(void *ptr, size_t size);
-
+int					ft_isspace(int c);
 #endif

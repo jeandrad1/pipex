@@ -6,11 +6,26 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:59:27 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/24 14:54:56 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/26 10:46:18 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+
+// Check if the string is empty or contains only spaces
+static int check_void(const char *str)
+{
+    if (str == NULL)
+        return 1;
+
+    while (*str)
+    {
+        if (!ft_isspace((unsigned char)*str))
+            return 0;
+        str++;
+    }
+    return 1;
+}
 
 // Check if PATH is set and set it if not it displays an error message and exits
 static void	check_and_set_env(char **env)
@@ -35,33 +50,16 @@ static void	check_and_set_env(char **env)
 }
 
 // Split the command into an array of strings
-//It uses strtok to split the command by spaces
-//And reallocates the array of strings to store each token
-//It returns the array of strings
-static char	**split_command(const char *command)
+// It uses tokenize_command to split the command by spaces
+// And reallocates the array of strings to store each token
+// It returns the array of strings
+static char **split_command(const char *command)
 {
-	char	**args;
-	char	*cmd_copy;
-	char	*token;
-	int		count;
-
-	args = NULL;
-	cmd_copy = ft_strdup(command);
-	if (cmd_copy  == NULL)
-		ft_exit(NULL, "Error: empty command.", EXIT_FAILURE);
-	token = ft_strtok(cmd_copy, " ");
-	count = 0;
-	while (token)
-	{
-		args = ft_realloc(args, sizeof(char *) * (count + 1));
-		args[count] = ft_strdup(token);
-		count++;
-		token = ft_strtok(NULL, " ");
-	}
-	args = ft_realloc(args, sizeof(char *) * (count + 1));
-	args[count] = NULL;
-	free(cmd_copy);
-	return (args);
+    int count;
+    char **args = tokenize_command(command, &count);
+    args = allocate_args(args, count);
+    args[count] = NULL;
+    return args;
 }
 
 // Parse the arguments
@@ -71,9 +69,13 @@ static char	**split_command(const char *command)
 void	ft_parse(int argc, char **argv, t_args *pipex)
 {
 	int	infile_fd;
+	int i;
 
+	i = 0;
 	if (argc != 5)
 		ft_exit(pipex, "Error: invalid number of arguments", EXIT_FAILURE);
+    if (check_void(argv[2]) || check_void(argv[3]))
+		ft_exit(pipex, "Error: command arguments cannot be empty or whitespace", EXIT_FAILURE);
 	pipex->infile = argv[1];
 	pipex->cmd1 = split_command(argv[2]);
 	pipex->cmd2 = split_command(argv[3]);

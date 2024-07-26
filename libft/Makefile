@@ -12,7 +12,7 @@ SRCS = ft_isalnum.c ft_isalpha.c ft_isdigit.c ft_isascii.c ft_isprint.c ft_strle
 		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c get_next_line.c\
 		ft_print_hex.c ft_print_hex_mayus.c ft_print_int.c ft_print_pointer.c ft_print_str.c\
 		ft_print_unsigned_int.c ft_printf.c ft_putchar.c\
-		ft_strtok.c ft_realloc.c
+		ft_strtok.c ft_realloc.c ft_isspace.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)

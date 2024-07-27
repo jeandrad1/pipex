@@ -6,7 +6,7 @@
 #    By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 13:23:39 by jeandrad          #+#    #+#              #
-#    Updated: 2024/07/27 16:47:07 by jeandrad         ###   ########.fr        #
+#    Updated: 2024/07/27 16:48:23 by jeandrad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = pipex
 CC = clang
 
 # Compiler flags
-FLAGS = -Wall -Werror -Wextra -g -Iinclude 
+FLAGS = -Wall -Werror -Wextra -Iinclude 
 
 # Source files for libft
 LIBFT_PATH = ./libft

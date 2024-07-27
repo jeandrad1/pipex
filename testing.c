@@ -7,7 +7,7 @@ void	ft_free_pipex(t_args *pipex)
 	i = 0;
 	if (pipex->cmd1)
 	{
-		while (pipex->cmd1[i] != NULL)
+		while (pipex->cmd1[i])
 		{
 			free(pipex->cmd1[i]);
 			i++;
@@ -17,7 +17,7 @@ void	ft_free_pipex(t_args *pipex)
 	i = 0;
 	if (pipex->cmd2)
 	{
-		while (pipex->cmd2[i] != NULL)
+		while (pipex->cmd2[i])
 		{
 			free(pipex->cmd2[i]);
 			i++;
@@ -33,8 +33,6 @@ void	ft_exit(t_args *pipex, const char *error_message, int exit_code)
 		perror(error_message);
 	exit(exit_code);
 }
-
-
 
 // Initialize the pipex structure
 void	ft_init_pipex(t_args *pipex)
@@ -88,10 +86,12 @@ static void	check_and_set_env(char **env)
 static char	**split_command(const char *command)
 {
 	int		count;
+	char 	**tmp;
 	char	**args;
 
-	args = tokenize_command(command, &count);
-	args = allocate_args(args, count);
+	tmp = tokenize_command(command, &count);
+	args = allocate_args(tmp, count);
+	free(tmp);
 	args[count] = NULL;
 	return (args);
 }
@@ -193,6 +193,7 @@ char	**tokenize_command(const char *command, int *count)
 		(*count)++;
 		token = ft_strtok(NULL, " ");
 	}
+	free(token);
 	free(cmd_copy);
 	return (args);
 }
@@ -288,5 +289,6 @@ int	main(int argc, char **argv, char **env)
 	ft_parse(argc, argv, &pipex);
 	ft_exec_cmd(&pipex);
 	ft_free_pipex(&pipex);
+	printf("Pipex executed successfully\n");
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:59:27 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/26 11:22:37 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/27 13:00:38 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,10 @@ static void	check_and_set_env(char **env)
 // It returns the array of strings
 static char	**split_command(const char *command)
 {
-	int		count;
 	char	**args;
 
-	args = tokenize_command(command, &count);
-	args = allocate_args(args, count);
-	args[count] = NULL;
-	return (args);
+	args = ft_split(command, ' ');
+	return(args);
 }
 
 // Parse the arguments

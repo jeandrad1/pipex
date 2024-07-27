@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:59:27 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/27 13:00:38 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/27 13:21:11 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static char	**split_command(const char *command)
 	char	**args;
 
 	args = ft_split(command, ' ');
-	return(args);
+	return (args);
 }
 
 // Parse the arguments

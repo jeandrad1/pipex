@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:07:10 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/27 16:35:26 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/27 16:40:29 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ static void	handle_parent(t_args *pipex, int pipe_fd[2], pid_t pid1, pid_t pid2)
 		ft_exit(pipex, "Error: waitpid failed for cmd1", EXEC_ERROR);
 	if (waitpid(pid2, &status2, 0) == -1)
 		ft_exit(pipex, "Error: waitpid failed for cmd2", EXEC_ERROR);
-	if (WEXITSTATUS(status1) == 127 && WEXITSTATUS(status2) == 127)
+	if (WEXITSTATUS(status1) == EXEC_ERROR
+		&& WEXITSTATUS(status2) == EXEC_ERROR)
 		ft_exit(pipex, "Command 1 error", EXEC_ERROR);
-	else if (WEXITSTATUS(status2) == 127)
+	else if (WEXITSTATUS(status2) == EXEC_ERROR)
 		ft_exit(pipex, "Command 2 error", EXEC_ERROR);
-
 }
 
 // Function to execute the commands

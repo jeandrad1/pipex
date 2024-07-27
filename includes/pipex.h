@@ -6,7 +6,7 @@
 /*   By: jeandrad <jeandrad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:14:07 by jeandrad          #+#    #+#             */
-/*   Updated: 2024/07/27 12:44:20 by jeandrad         ###   ########.fr       */
+/*   Updated: 2024/07/27 16:45:35 by jeandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 #define DUP2_ERROR 8
 #define EXEC_ERROR 127
 
-// Structure to store the arguments
+//Structure to store the arguments
 typedef struct s_args
 {
 	char	**cmd1;
@@ -40,10 +40,17 @@ typedef struct s_args
 	char	**env;
 }	t_args;
 
+//Initializes the pipex structure
 void	ft_init_pipex(t_args *pipex);
+
+//Parses the arguments
 void	ft_parse(int argc, char **argv, t_args *pipex);
+
+//Executes the commands
 void	ft_exec_cmd(t_args *pipex);
+
+//Exits the program when an error occurs
 void	ft_exit(t_args *pipex, const char *error_message, int exit_code);
+
+//Frees the pipex structure
 void	ft_free_pipex(t_args *pipex);
-char	**tokenize_command(const char *command, int *count);
-char	**allocate_args(char **args, int count);

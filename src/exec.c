@@ -15,6 +15,12 @@
 // Function to handle the child process for the first command
 // Uses dup2 to redirect the input and output of the command
 // Closes the file descriptors and executes the command 
+// dup2() makes newfd be the copy of oldfd, closing newfd first if necessary,
+// but note the following: if oldfd is not a valid file descriptor,
+// then the call fails, and newfd is not closed.
+// close() closes a file descriptor, so that it no longer refers to any file and may be reused.
+// execvp() executes the program pointed to by file, searching for the program in the directories
+// listed in the PATH environment variable.
 static void	handle_child1(t_args *pipex, int pipe_fd[2])
 {
 	int	infile_fd;
@@ -55,6 +61,9 @@ static void	handle_child2(t_args *pipex, int pipe_fd[2])
 // Function to handle the parent process
 // Closes the file descriptors and waits for the child processes to finish
 // If the child processes fail it displays an error message and exits
+// WEXITSTATUS returns the exit status of the child
+// WIFEXITED returns true if the child terminated normally
+// waitpid() suspends the calling process until a child specified by pid argument has changed state
 static void	handle_parent(t_args *pipex, int pipe_fd[2], pid_t pid1, pid_t pid2)
 {
 	int	status1;
